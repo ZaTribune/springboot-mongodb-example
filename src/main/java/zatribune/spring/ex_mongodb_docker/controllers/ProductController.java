@@ -1,8 +1,8 @@
 package zatribune.spring.ex_mongodb_docker.controllers;
 
-import zatribune.spring.ex_mongodb_docker.commands.ProductForm;
-import zatribune.spring.ex_mongodb_docker.converters.ProductToProductForm;
-import zatribune.spring.ex_mongodb_docker.domain.Product;
+import zatribune.spring.ex_mongodb_docker.commands.ProductCommand;
+import zatribune.spring.ex_mongodb_docker.converters.ProductToProductCommand;
+import zatribune.spring.ex_mongodb_docker.entities.Product;
 import zatribune.spring.ex_mongodb_docker.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,11 +19,11 @@ import javax.validation.Valid;
 public class ProductController {
     private ProductService productService;
 
-    private ProductToProductForm productToProductForm;
+    private ProductToProductCommand productToProductCommand;
 
     @Autowired
-    public void setProductToProductForm(ProductToProductForm productToProductForm) {
-        this.productToProductForm = productToProductForm;
+    public void setProductToProductCommand(ProductToProductCommand productToProductCommand) {
+        this.productToProductCommand = productToProductCommand;
     }
 
     @Autowired
@@ -51,26 +51,26 @@ public class ProductController {
     @RequestMapping("product/edit/{id}")
     public String edit(@PathVariable String id, Model model){
         Product product = productService.getById(id);
-        ProductForm productForm = productToProductForm.convert(product);
+        ProductCommand productCommand = productToProductCommand.convert(product);
 
-        model.addAttribute("productForm", productForm);
+        model.addAttribute("productCommand", productCommand);
         return "/product/productForm";
     }
 
     @RequestMapping("/product/new")
     public String newProduct(Model model){
-        model.addAttribute("productForm", new ProductForm());
+        model.addAttribute("productCommand", new ProductCommand());
         return "/product/productForm";
     }
 
     @RequestMapping(value = "/product", method = RequestMethod.POST)
-    public String saveOrUpdateProduct(@Valid ProductForm productForm, BindingResult bindingResult){
+    public String saveOrUpdateProduct(@Valid ProductCommand productCommand, BindingResult bindingResult){
 
         if(bindingResult.hasErrors()){
             return "/product/productForm";
         }
 
-        Product savedProduct = productService.saveOrUpdateProductForm(productForm);
+        Product savedProduct = productService.saveOrUpdateProductForm(productCommand);
 
         return "redirect:/product/show/" + savedProduct.getId();
     }

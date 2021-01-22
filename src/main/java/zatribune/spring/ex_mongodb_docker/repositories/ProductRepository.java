@@ -1,6 +1,6 @@
 package zatribune.spring.ex_mongodb_docker.repositories;
 
-import zatribune.spring.ex_mongodb_docker.domain.Product;
+import zatribune.spring.ex_mongodb_docker.entities.Product;
 import org.springframework.data.repository.CrudRepository;
 /**
  * Created by ZaTribune on 22/jan/2021.

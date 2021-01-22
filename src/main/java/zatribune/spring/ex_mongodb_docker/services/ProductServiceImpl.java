@@ -1,8 +1,8 @@
 package zatribune.spring.ex_mongodb_docker.services;
 
-import zatribune.spring.ex_mongodb_docker.commands.ProductForm;
-import zatribune.spring.ex_mongodb_docker.converters.ProductFormToProduct;
-import zatribune.spring.ex_mongodb_docker.domain.Product;
+import zatribune.spring.ex_mongodb_docker.commands.ProductCommand;
+import zatribune.spring.ex_mongodb_docker.converters.ProductCommandToProduct;
+import zatribune.spring.ex_mongodb_docker.entities.Product;
 import zatribune.spring.ex_mongodb_docker.repositories.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,12 +16,12 @@ import java.util.List;
 public class ProductServiceImpl implements ProductService {
 
     private final ProductRepository productRepository;
-    private final ProductFormToProduct productFormToProduct;
+    private final ProductCommandToProduct productCommandToProduct;
 
     @Autowired
-    public ProductServiceImpl(ProductRepository productRepository, ProductFormToProduct productFormToProduct) {
+    public ProductServiceImpl(ProductRepository productRepository, ProductCommandToProduct productCommandToProduct) {
         this.productRepository = productRepository;
-        this.productFormToProduct = productFormToProduct;
+        this.productCommandToProduct = productCommandToProduct;
     }
 
 
@@ -49,8 +49,8 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Product saveOrUpdateProductForm(ProductForm productForm) {
-        Product savedProduct = saveOrUpdate(productFormToProduct.convert(productForm));
+    public Product saveOrUpdateProductForm(ProductCommand productCommand) {
+        Product savedProduct = saveOrUpdate(productCommandToProduct.convert(productCommand));
 
         System.out.println("Saved Product Id: " + savedProduct.getId());
         return savedProduct;

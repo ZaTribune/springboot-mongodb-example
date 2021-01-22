@@ -1,32 +1,27 @@
-package zatribune.spring.ex_mongodb_docker.commands;
+package zatribune.spring.ex_mongodb_docker.entities;
 
-import org.hibernate.validator.constraints.URL;
+import org.bson.types.ObjectId;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
 import java.math.BigDecimal;
 /**
  * Created by ZaTribune on 22/jan/2021.
  */
-public class ProductForm {
-    private String id;
-    @NotBlank
-    @Size(min=5,max = 255)
+@Document
+public class Product {
+    @Id
+    private ObjectId _id;
     private String description;
-    @Min(0)
-    @Max(5000)
     private BigDecimal price;
-    @URL
     private String imageUrl;
 
-    public String getId() {
-        return id;
+    public ObjectId getId() {
+        return _id;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setId(ObjectId id) {
+        this._id = id;
     }
 
     public String getDescription() {

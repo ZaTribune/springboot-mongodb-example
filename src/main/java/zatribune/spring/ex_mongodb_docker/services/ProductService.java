@@ -1,7 +1,7 @@
 package zatribune.spring.ex_mongodb_docker.services;
 
-import zatribune.spring.ex_mongodb_docker.commands.ProductForm;
-import zatribune.spring.ex_mongodb_docker.domain.Product;
+import zatribune.spring.ex_mongodb_docker.commands.ProductCommand;
+import zatribune.spring.ex_mongodb_docker.entities.Product;
 
 import java.util.List;
 /**
@@ -17,5 +17,5 @@ public interface ProductService {
 
     void delete(String id);
 
-    Product saveOrUpdateProductForm(ProductForm productForm);
+    Product saveOrUpdateProductForm(ProductCommand productCommand);
 }

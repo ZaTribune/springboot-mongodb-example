@@ -26,34 +26,38 @@
 </head>
 <body>
 <div class="container">
-    <div th:if="${not #lists.isEmpty(products)}">
-        <div class="navbar navbar-dark p-2 bg-dark">
-            <h2 class="navbar-text text-white">Product List</h2>
-        </div>
-        <table class="table table-striped">
+    <div class="row navbar navbar-dark p-2 bg-dark">
+        <h2 class="col navbar-text text-white">Product List</h2>
+    </div>
+    <div class="alert alert-info" th:if="${#lists.isEmpty(products)}">No products available.</div>
+    <div class="row">
+        <table th:if="${not #lists.isEmpty(products)}" class="table table-striped">
             <tr>
-                <th>Id</th>
+                <th>#</th>
                 <th>Description</th>
                 <th>Price</th>
                 <th>Image URL</th>
-                <th>List</th>
-                <th>Edit</th>
-                <th>Delete</th>
+                <th></th>
+                <th></th>
+                <th></th>
             </tr>
-            <tr th:each="product : ${products}">
-                <td th:text="${product.id.toHexString()}"></td>
+            <tr th:each="product,stat : ${products}">
+                <td th:text="${stat.index+1}"></td>
                 <td th:text="${product.description}"></td>
                 <td th:text="${product.price}"></td>
                 <td th:text="${product.imageUrl}"></td>
-                <td><a class="text-decoration-none" th:href="${'/product/show/' + product.id.toHexString()}">View</a> </td>
-                <td><a class="text-decoration-none" th:href="${'/product/edit/' + product.id.toHexString()}">Edit</a> </td>
-                <td><a class="text-decoration-none" th:href="${'/product/delete/' + product.id.toHexString()}">Delete</a> </td>
+                <td><a class="text-decoration-none" th:href="${'/product/show/' + product.id.toHexString()}">View</a>
+                </td>
+                <td><a class="text-decoration-none" th:href="${'/product/edit/' + product.id.toHexString()}">Edit</a>
+                </td>
+                <td><a class="text-decoration-none"
+                       th:href="${'/product/delete/' + product.id.toHexString()}">Delete</a></td>
             </tr>
         </table>
     </div>
     <div class="row">
         <div class="col-sm-3">
-            <a class="btn btn-secondary" href="/product/new">New Product</a>
+            <a class="btn btn-success m-1" href="/product/new"><span class="fa fa-plus p-1"></span>New Product</a>
         </div>
     </div>
 </div>

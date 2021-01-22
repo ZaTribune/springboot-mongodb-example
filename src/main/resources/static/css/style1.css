@@ -1,3 +1,12 @@
+.container{
+    border-left:1px solid #848484;
+    border-right:1px solid #848484;
+    border-bottom:1px solid #848484;
+}
+p{
+    margin: 0;
+}
+
 .card{
     padding: 0;
     border-radius: 0;
@@ -10,4 +19,7 @@
     display: flex;
     align-self: center;
     align-items: center;
+    width: 40px;
+    height: 40px;
+    color: white;
 }
