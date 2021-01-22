@@ -4,10 +4,10 @@ This is a kind of quick and dirty application. Just meant to do some CRUD
 operations with MongoDB. Definitely not the definitive resource on MongoDB, but
 it is a working example.
 
-<p align="center">
-  <img src="src/main/resources/static/images/spring.svg" width="300" height="300"/>
-  <img src="src/main/resources/static/images/mongodb.svg" width="300" height="300"/>
-  <img src="src/main/resources/static/images/docker.svg" width="300" height="300"/>
+<p style="text-align: center">
+  <img alt="Spring" src="src/main/resources/static/images/spring.svg" width="300" height="300"/>
+  <img alt="MongoDB" src="src/main/resources/static/images/mongodb.svg" width="300" height="300"/>
+  <img alt="Docker" src="src/main/resources/static/images/docker.svg" width="300" height="300"/>
 </p>
 
 # Steps:
