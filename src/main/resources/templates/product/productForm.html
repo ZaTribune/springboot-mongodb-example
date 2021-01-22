@@ -27,9 +27,12 @@
 <body>
 <div class="container">
 
-    <h2>Product Details</h2>
+    <div class="col d-flex p-2 navbar-dark bg-dark">
+        <a class="btn btn-secondary btn-custom me-1 fa fa-backward" th:href="${'/'}"></a>
+        <h2 class="navbar-text d-inline-block text-white">Product Details</h2>
+    </div>
     <div>
-        <form class="container-fluid needs-validation col-3" method="post" novalidate
+        <form class="container-fluid needs-validation col-3 m-0" method="post" novalidate
               th:object="${productForm}" th:action="@{/product}">
 
             <div th:if="${#fields.hasErrors('*')}" class="alert alert-danger m-0">

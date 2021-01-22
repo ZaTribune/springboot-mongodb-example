@@ -54,20 +54,20 @@ public class ProductController {
         ProductForm productForm = productToProductForm.convert(product);
 
         model.addAttribute("productForm", productForm);
-        return "product/productform";
+        return "/product/productForm";
     }
 
     @RequestMapping("/product/new")
     public String newProduct(Model model){
         model.addAttribute("productForm", new ProductForm());
-        return "product/productform";
+        return "/product/productForm";
     }
 
     @RequestMapping(value = "/product", method = RequestMethod.POST)
     public String saveOrUpdateProduct(@Valid ProductForm productForm, BindingResult bindingResult){
 
         if(bindingResult.hasErrors()){
-            return "product/productform";
+            return "/product/productForm";
         }
 
         Product savedProduct = productService.saveOrUpdateProductForm(productForm);

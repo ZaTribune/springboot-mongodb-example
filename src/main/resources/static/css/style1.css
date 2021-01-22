@@ -5,3 +5,9 @@
 .card-header{
     border-radius: 0;
 }
+
+.btn-custom{
+    display: flex;
+    align-self: center;
+    align-items: center;
+}
