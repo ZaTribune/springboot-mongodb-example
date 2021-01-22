@@ -23,22 +23,22 @@ $ docker pull mongo
 ```
 $ docker run -p 27017:27017 -d mongo
 ```  
-<p>As per the [MongoDB documentation](https://hub.docker.com/_/mongo) on Docker Hub:  
+As mentioned in [MongoDB Documentation](https://hub.docker.com/_/mongo) on Docker Hub:  
 The option -p sets ports. <strong>host:remote.</strong> Moreover, we specified <strong>27017</strong> for both
 parts cause in the host part , spring boot will look for the default
 mongoDB port which is <strong>27017</strong>, whereas in the remote port<strong>[in the docker image]</strong>
-mongo image is set to port <strong>27017</strong> by default.</p>  
- 
+mongo image is set to port <strong>27017</strong> by default.  
+
 4- Optional : you can view DB logs in a separate window using the command :
 ```
 $ docker logs -f [container-name]   
 ```
 5- When the Docker container is closed, your data will not be persisted.  
-&nbsp;&nbsp;&nbsp;&nbsp;-To be able to persist data in your host file system ,use a command like :
+&nbsp;&nbsp;&nbsp;&nbsp;To be able to persist data in your host file system ,use a command like :
 ```
 $ docker run -p 27017:27017 -v "D:\Projects\Intellij IDEA\spring\Ex#SpringBoot+MongoDB+Docker\docker_data\mongo:/data/db"  -d mongo 
 ```
-<p>The option -v tells docker to map data from the machine/host specified directory to the conatiner's directory of "\data\db".</p>  
+&nbsp;&nbsp;&nbsp;&nbsp;The option -v tells docker to map data from the machine/host specified directory to the conatiner's directory of "\data\db".  
 
 ## Authors  
    **Muhammad Ali Arafah** - find me on : [Twitter](https://twitter.com/ZaTribune), [LinkedIn](https://www.linkedin.com/in/zatribune).  
