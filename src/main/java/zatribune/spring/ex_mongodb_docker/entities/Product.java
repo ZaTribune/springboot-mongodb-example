@@ -4,6 +4,7 @@ import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import javax.annotation.processing.Generated;
 import java.math.BigDecimal;
 /**
  * Created by ZaTribune on 22/jan/2021.

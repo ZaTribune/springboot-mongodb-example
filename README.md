@@ -36,12 +36,12 @@ $ docker run -p 27017:27017 -d mongo
     mongoDB port which is <strong>27017</strong>, whereas in the remote port <strong>[in the docker image]</strong>
     mongo image is set to port <strong>27017</strong> by default.  
 
-4. Optional : When the Docker container is closed, your data will not be persisted.  
+4. Optional : When the Docker container gets closed, your data will not be persisted.  
 > - To be able to persist data in your host file system , use a command like :
 ```
-$ docker run -p 27017:27017 -v "D:\Projects\Intellij IDEA\spring\Ex#SpringBoot+MongoDB+Docker\docker_data\mongo:/data/db"  -d mongo 
+$ docker run --name spring_mongodb -p 27017:27017 -v "D:\Projects\Intellij IDEA\spring\Ex#SpringBoot+MongoDB+Docker\docker_data\mongo:/data/db"  -d mongo 
 ```
-> - The option -v tells docker to map data from the machine/host specified directory to the conatiner's directory of "\data\db".  
+> - The option -v tells docker to map data from the machine/host specified directory to the container's directory of "\data\db".  
 
 ## Authors  
-   **Muhammad Ali Arafah** - find me on : [Twitter](https://twitter.com/ZaTribune), [LinkedIn](https://www.linkedin.com/in/zatribune).  
+   **Muhammad Ali** - find me on : [Twitter](https://twitter.com/ZaTribune), [LinkedIn](https://www.linkedin.com/in/zatribune).  
