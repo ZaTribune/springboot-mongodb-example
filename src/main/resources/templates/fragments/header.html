@@ -1,9 +1,26 @@
 <div xmlns:th="http://www.thymeleaf.org"
+     xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
      th:fragment="HeaderFragment"
-     class="row text-center bg-dark"
+     class="row p-3 text-center bg-dark justify-content-evenly"
      style="background-color: blueviolet">
-    <img class="p-2" src="images/docker.svg"
+    <img class="col-12" src="images/docker.svg"
          th:width="100"
          th:height="100"
          th:src="@{/images/spring.svg}" alt="image"/>
+    <div class="col-3 m-2 w-auto">
+        <!--the @{/login} will call for the default spring security login page which needs bootstrap 4 -->
+        <a sec:authorize="isAnonymous()" class="btn btn-outline-light m-1" th:href="@{../login}"
+           th:if="${#httpServletRequest.requestURI!='/login'}">Login/Register</a>
+        <div class="alert alert-success alert-dismissible fade show m-1" role="alert"
+             th:if="${message!=null}"><!--not defined in this context but later-->
+            <strong>You have been signed out.</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        <div class="m-1 bg-secondary rounded" sec:authorize="isAuthenticated()">
+            <form id="logoutForm" method="POST" th:action="@{/logout}"></form>
+            <a class="btn btn-outline-light m-1" onclick="document.forms['logoutForm'].submit()">Logout</a>
+            <p class="d-inline-block m-1 text-light align-self-center"><span sec:authentication="name"></span>
+            </p>
+        </div>
+    </div>
 </div>
